@@ -1,2 +1,2 @@
 # timely
-Timely is a web-based appointment booking system designed for small businesses, freelancers, and service providers who need a simple way to manage client bookings.
+timely is a web-based appointment booking system designed for students and tutors who need a simple way to manage bookings.

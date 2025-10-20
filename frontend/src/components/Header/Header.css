@@ -64,3 +64,10 @@
   font-size: 16px;
   font-weight: 500;
 }
+.signup-button{
+  width: 105px;
+}
+
+svg {
+  padding-top: 10px;
+}

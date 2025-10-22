@@ -1,0 +1,30 @@
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding-top: 150px; /* Height of header */
+  padding-bottom: 254px;
+  background: #6176F7;
+  color: #FFFFFF;
+  text-align: left;
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-text { max-width: 790px; }
+.hero-text .subtitle { font-weight: 600; font-size: 24px; color: #FFC27A; margin-bottom: 35px; }
+.hero-text h1 { font-size: 56px; line-height: 72px; margin-bottom: 40px; }
+.hero-text .description { font-size: 20px; max-width: 496px; margin-bottom: 50px; }
+.hero-image img { width: 100%; max-width: 738px; height: auto; background-color: #6176F7; }
+
+/* Other Sections */
+.services-section, .how-it-works-section, .why-choose-us-section {
+    padding: 100px 0;
+}

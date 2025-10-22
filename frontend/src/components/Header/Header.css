@@ -1,0 +1,73 @@
+.header {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 24px 0;
+  background-color: #6176F7;
+}
+
+.header .container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'PT Serif', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 40px;
+  color: #FFC27A;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav a {
+  padding: 12px 24px;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.nav a.active {
+  font-weight: 600;
+  color: #FFC27A;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-link {
+  padding: 12px 24px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+.signup-button{
+  width: 105px;
+}
+
+svg {
+  padding-top: 10px;
+}

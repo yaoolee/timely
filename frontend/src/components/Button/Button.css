@@ -1,0 +1,23 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 100px;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #FFFFFF;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(180deg, #FFC27A 0%, #FFA337 100%);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 163, 55, 0.4);
+}

@@ -2,7 +2,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  width: 135px;
+  height: 48px;
   border: none;
   border-radius: 100px;
   font-family: 'Public Sans', sans-serif;

@@ -22,9 +22,18 @@
   min-width: 280px;
 }
 
-.footer-column .logo {
+.footer-column .brand {
   font-size: 48px;
   margin-bottom: 20px;
+  color: #FFFFFF;
+  font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.footer-column .brand span {
+  color: #FFC27A;
 }
 
 .footer-column h4 {
@@ -80,3 +89,4 @@
 .subscribe-form button {
     width: 162px;
 }
+

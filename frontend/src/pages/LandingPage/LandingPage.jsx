@@ -27,7 +27,7 @@ const LandingPage = () => {
               <p className="subtitle">START TO SUCCESS</p>
               <h1>Book Tutoring Sessions Easily</h1>
               <p className="description">Find the right tutor and reserve a time slot in minutes.</p>
-              <Button>Get Started</Button>
+              <a href="/register"><Button>Get Started</Button></a>
             </div>
             <div className="hero-image">
               <img src="./src/assets/Saly-10.png" alt="A person at a desk illustration" />
@@ -121,7 +121,7 @@ const LandingPage = () => {
               <h2>Why Choose Us</h2>
               <p>Timely provides a very simple scheduling for students to connect with tutors. Instead of back-and-forth emails or messages, everything happens in one place: browse services, pick a time, and confirm your appointment in just a few clicks.
               </p>
-              <Button>Sign up for Free</Button>
+              <a href="/register"><Button>Sign up for Free</Button></a>
             </div>
           </div>
         </section>

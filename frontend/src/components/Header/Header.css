@@ -27,6 +27,10 @@
   font-weight: 700;
   font-size: 48px;
   line-height: 40px;
+  color: #FFFFFF;
+}
+
+.logo span {
   color: #FFC27A;
 }
 

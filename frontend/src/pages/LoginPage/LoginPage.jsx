@@ -1,10 +1,10 @@
-import './Register.css';
+import './LoginPage.css';
 import { Link } from 'react-router-dom';
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return (
     <>
-    <div className="page-container">
+      <div className="page-container">
         <div className="card">
           <a href="/" className="back-link">Back</a>
           
@@ -13,17 +13,19 @@ export default function RegisterPage() {
             <span className="logo-imely">imely</span>
           </h1>
           
-          <h2 className="title">Sign up for free today!</h2>
+          <div className="text-wrapper">
+            <h2 className="title">Welcome to Timely</h2>
+            <p className="subtitle">Please sign-in to your account</p>
+          </div>
           
           <form className="form">
-            <input type="text" placeholder="Username" className="form-input" />
             <input type="email" placeholder="Email" className="form-input" />
             <input type="password" placeholder="Password" className="form-input" />
-            <button type="submit" className="submit-button">REGISTER</button>
+            <button type="submit" className="submit-button">LOGIN</button>
           </form>
           
           <p className="prompt">
-            Already have an account? <Link to="/login" className="prompt-link">Sign in instead</Link>
+            New on our platform? <Link to="/register" className="prompt-link">Create an account</Link>
           </p>
         </div>
       </div>

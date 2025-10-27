@@ -1,0 +1,138 @@
+ @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600&family=PT+Serif:ital,wght@1,700&display=swap');
+
+  /* Basic Reset */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Public Sans', sans-serif;
+  }
+
+  /* Page Container */
+  .page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    padding: 20px;
+  }
+
+  /* Card Styling */
+  .card {
+    position: relative;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+  }
+
+  /* Back Link */
+  .back-link {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Logo */
+  .logo {
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 24px;
+    padding-top: 20px; /* Space for back link */
+  }
+  .logo-t {
+    color: #FFC27A; /* Orange color for T */
+  }
+  .logo-imely {
+    color: #333;
+  }
+
+  /* Text Wrapper for alignment */
+  .text-wrapper {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  /* Title */
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+
+  /* Subtitle */
+  .subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+
+  /* Form */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #5c67f2; /* Blue to match button */
+  }
+
+  /* Button */
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #5c67f2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .submit-button:hover {
+    background-color: #4a54e1;
+  }
+
+  /* Bottom Prompt */
+  .prompt {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+  }
+  .prompt-link {
+    color: #5c67f2;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .prompt-link:hover {
+    text-decoration: underline;
+  }

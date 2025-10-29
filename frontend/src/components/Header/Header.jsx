@@ -1,20 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 import '../Button/Button.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const Header = () => {
+  const location = useLocation();
+  const [active, setActive] = useState('home');
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setActive('home');
+    } else if (location.pathname.startsWith('/service')) {
+      setActive('services');
+    }
+  }, [location.pathname]);
+
   return (
     <header className="header">
       <div className="container">
         <div className="header-content">
           <div className="logo"><span>T</span>imely</div>
           <nav className="nav">
-            <a href="#" className="active">Home</a>
-            <a href="#">Services</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <Link to="/" className={active === 'home' ? 'active' : ''} onClick={() => setActive('home')}>Home</Link>
+            <Link to="/service" className={active === 'services' ? 'active' : ''} onClick={() => setActive('services')}>Services</Link>
+            <a
+              href="#"
+              className={active === 'about' ? 'active' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                setActive('about');
+              }}
+            >
+              About
+            </a>
+            <a
+              href="#"
+              className={active === 'contact' ? 'active' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                setActive('contact');
+              }}
+            >
+              Contact
+            </a>
           </nav>
           <div className="header-actions">
             <Link to="/login" className="login-link">

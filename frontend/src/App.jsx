@@ -5,18 +5,25 @@ import LandingPage from './pages/LandingPage/LandingPage.jsx';
 import RegisterPage from './pages/Register/RegisterPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import ServicePage from './pages/ServicePage/ServicePage.jsx';
-
+import BookingPage from './pages/BookingPage/BookingPage.jsx';
+import { AuthProvider } from './auth/AuthContext.jsx';
+import ProtectedRoute from './auth/ProtectedRoute.jsx';
 
 function App() {
   return (
     <>
     <div className="App">
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/service" element={<ServicePage />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/service" element={<ServicePage />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/booking" element={<BookingPage />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </div>
     </>
   );

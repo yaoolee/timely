@@ -1,8 +1,9 @@
 import React from 'react';
 import './ServiceCard.css';
+import { useNavigate } from 'react-router-dom';
 
-// This component receives a single 'service' object as a prop
 const ServiceCard = ({ service }) => {
+  const navigate = useNavigate();
   return (
     <div className="service-card-wrapper">
       <div className="service-card-main">
@@ -32,7 +33,7 @@ const ServiceCard = ({ service }) => {
             <p>{service.instructorTitle}</p>
           </div>
         </div>
-        <button className="book-now-btn">Book Now</button>
+        <button className="book-now-btn" onClick={() => navigate('/booking')}>Book Now</button>
       </div>
     </div>
   );

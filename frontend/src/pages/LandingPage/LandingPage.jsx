@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header.jsx';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 import './LandingPage.css';
+import { Link } from 'react-router-dom';
 
 
 /* const LandingPage = () => {
@@ -27,7 +28,7 @@ const LandingPage = () => {
               <p className="subtitle">START TO SUCCESS</p>
               <h1>Book Tutoring Sessions Easily</h1>
               <p className="description">Find the right tutor and reserve a time slot in minutes.</p>
-              <a href="/register"><Button>Get Started</Button></a>
+              <Link to="/service"><Button>Get Started</Button></Link>
             </div>
             <div className="hero-image">
               <img src="./src/assets/Saly-10.png" alt="A person at a desk illustration" />

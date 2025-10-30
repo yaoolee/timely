@@ -1,7 +1,28 @@
 import './LoginPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useAuth } from '../../auth/useAuth.js';
 
 export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [err, setErr] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setErr('');
+    try {
+      await login(email, password);
+      navigate(from, { replace: true });
+    } catch (error) {
+      setErr(error.message);
+    }
+  };
+
   return (
     <>
       <div className="page-container">
@@ -18,10 +39,11 @@ export default function LoginPage() {
             <p className="subtitle">Please sign-in to your account</p>
           </div>
           
-          <form className="form">
-            <input type="email" placeholder="Email" className="form-input" />
-            <input type="password" placeholder="Password" className="form-input" />
+          <form className="form" onSubmit={onSubmit}>
+            <input type="email" placeholder="Email" className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" placeholder="Password" className="form-input" value={password} onChange={(e) => setPassword(e.target.value)} />
             <button type="submit" className="submit-button">LOGIN</button>
+            {err && <p style={{ color: '#d33', fontSize: 14, marginTop: 8 }}>{err}</p>}
           </form>
           
           <p className="prompt">

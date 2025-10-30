@@ -1,0 +1,156 @@
+/* --- Booking Page Styles --- */
+.booking-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 200px 0;
+}
+.booking-title {
+  font-size: 36px;
+  color: #21212F;
+  margin-bottom: 30px;
+}
+.calendar-wrapper {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* --- Calendar Card --- */
+.calendar-card {
+  flex: 2;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.calendar-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+.calendar-grid.days span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #999;
+}
+.date-btn {
+  border: none;
+  background: #f7fafc;
+  padding: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.date-btn.selected {
+  background-color: #6176F7;
+  color: white;
+  font-weight: 700;
+}
+/* --- Times Card --- */
+.times-card {
+  flex: 1;
+  min-width: 250px;
+}
+.times-card h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+.times-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.time-btn {
+  padding: 10px;
+  border: 1px solid #CFD3D6;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.time-btn.selected {
+  background-color: #6176F7;
+  color: white;
+  border-color: #6176F7;
+}
+.book-session-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #6176F7;
+  color: white;
+  transition: background-color 0.3s;
+}
+.book-session-btn:disabled {
+  background-color: #E7E9EB;
+  cursor: not-allowed;
+}
+
+/* --- Confirmation Card --- */
+.confirmation-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-top: 40px;
+}
+.confirmation-card h2 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+  color: #21212F;
+}
+/* ... (other confirmation styles) ... */
+.confirmation-details {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.confirmation-actions {
+  display: flex;
+  gap: 15px;
+}
+ .btn-cancel {
+   background: #F8F4FF;
+    border: 1px solid #CFD3D6;
+    color: #555;
+}
+.btn-reschedule {
+    background: #6176F7;
+    border: 1px solid #6176F7;
+    color: white;
+}
+.btn-cancel, .btn-reschedule {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}

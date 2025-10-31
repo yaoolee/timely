@@ -1,12 +1,12 @@
 .footer {
   padding: 80px 0;
-  background: #21212F;
+  background: #21212f;
 }
 
 .footer .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-content {
@@ -25,45 +25,45 @@
 .footer-column .brand {
   font-size: 48px;
   margin-bottom: 20px;
-  color: #FFFFFF;
-  font-family: 'PT Serif', serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 48px;
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 48px;
 }
 
 .footer-column .brand span {
-  color: #FFC27A;
+  color: #ffc27a;
 }
 
 .footer-column h4 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 600;
   font-size: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 15px;
 }
 
 .footer-column p {
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  color: #E7E9EB;
+  color: #e7e9eb;
   margin-bottom: 10px;
 }
 
 .footer-column a {
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  color: #CFD3D6;
+  color: #cfd3d6;
   text-decoration: none;
   display: block;
   margin-bottom: 15px;
 }
 
 .footer-column a:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .subscribe-form {
@@ -74,19 +74,18 @@
 }
 
 .subscribe-form input {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 8px;
   padding: 16px;
   border: none;
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-size: 16px;
-  color: #1B1D1F;
+  color: #1b1d1f;
 }
 
 .subscribe-form input::placeholder {
-  color: #6D737A;
+  color: #6d737a;
 }
 .subscribe-form button {
-    width: 162px;
+  width: 162px;
 }
-

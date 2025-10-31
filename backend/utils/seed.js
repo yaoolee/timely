@@ -16,19 +16,33 @@ async function seed() {
   await TimeSlot.deleteMany();
   await User.deleteMany();
 
-  // Create admin user
   const hash = await bcrypt.hash("adminpass", 10);
-  const admin = await User.create({ name: "Admin jack", email: "admin@timely.test", passwordHash: hash, role: "admin" });
+  const admin = await User.create({
+    name: "Admin jack",
+    email: "admin@timely.test",
+    passwordHash: hash,
+    role: "admin",
+  });
 
-  // Create normal user
   const userHash = await bcrypt.hash("userpass", 10);
-  const user = await User.create({ name: "Student john", email: "john@timely.test", passwordHash: userHash, role: "user" });
+  const user = await User.create({
+    name: "Student john",
+    email: "john@timely.test",
+    passwordHash: userHash,
+    role: "user",
+  });
 
-  // Services
-  const math = await Service.create({ name: "Math Tutoring", description: "Algebra & calculus help", duration: 60 });
-  const eng = await Service.create({ name: "English Tutoring", description: "Writing & reading", duration: 45 });
+  const math = await Service.create({
+    name: "Math Tutoring",
+    description: "Algebra & calculus help",
+    duration: 60,
+  });
+  const eng = await Service.create({
+    name: "English Tutoring",
+    description: "Writing & reading",
+    duration: 45,
+  });
 
-  // Time slots 
   const dates = ["2025-10-13", "2025-10-14", "2025-10-15"];
   for (const d of dates) {
     await TimeSlot.create({ serviceId: math._id, date: d, startTime: "14:00", endTime: "15:00" });

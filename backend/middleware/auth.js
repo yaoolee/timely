@@ -4,17 +4,19 @@ dotenv.config();
 
 export function authMiddleware(requiredRole = null) {
   return (req, res, next) => {
-    const header = req.headers.authorization;
-    if (!header)
-        return res.status(401).json({ message: "Authorization header missing" });
+    const header = req.headers.authorization || "";
+    let token = header.startsWith("Bearer ") ? header.split(" ")[1] : null;
 
-    const token = header.split(" ")[1];
-    if (!token)
-        return res.status(401).json({ message: "Token missing" });
+    // Fallback to httpOnly cookie
+    if (!token && req.cookies && req.cookies.token) {
+      token = req.cookies.token;
+    }
+
+    if (!token) return res.status(401).json({ message: "Token missing" });
 
     try {
       const payload = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = payload; 
+      req.user = payload;
       if (requiredRole && req.user.role !== requiredRole) {
         return res.status(403).json({ message: "Forbidden" });
       }

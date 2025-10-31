@@ -5,7 +5,7 @@ const appointmentSchema = new mongoose.Schema({
   serviceId: { type: mongoose.Schema.Types.ObjectId, ref: "Service", required: true },
   timeSlotId: { type: mongoose.Schema.Types.ObjectId, ref: "TimeSlot", required: true },
   status: { type: String, enum: ["booked", "canceled", "rescheduled"], default: "booked" },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
 });
 
 export default mongoose.model("Appointment", appointmentSchema);

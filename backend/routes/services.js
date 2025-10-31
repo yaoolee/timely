@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
   res.json(services);
 });
 
-
 router.post("/", authMiddleware("admin"), async (req, res) => {
   const { name, description, duration } = req.body;
   const s = await Service.create({ name, description, duration });

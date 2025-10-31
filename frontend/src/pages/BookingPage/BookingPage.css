@@ -1,4 +1,3 @@
-/* --- Booking Page Styles --- */
 .booking-container {
   max-width: 900px;
   margin: 40px auto;
@@ -6,7 +5,7 @@
 }
 .booking-title {
   font-size: 36px;
-  color: #21212F;
+  color: #21212f;
   margin-bottom: 30px;
 }
 .calendar-wrapper {
@@ -15,14 +14,13 @@
   flex-wrap: wrap;
 }
 
-/* --- Calendar Card --- */
 .calendar-card {
   flex: 2;
   min-width: 300px;
   background: #fff;
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 .calendar-header {
   display: flex;
@@ -60,11 +58,11 @@
   font-size: 14px;
 }
 .date-btn.selected {
-  background-color: #6176F7;
+  background-color: #6176f7;
   color: white;
   font-weight: 700;
 }
-/* --- Times Card --- */
+
 .times-card {
   flex: 1;
   min-width: 250px;
@@ -81,15 +79,15 @@
 }
 .time-btn {
   padding: 10px;
-  border: 1px solid #CFD3D6;
+  border: 1px solid #cfd3d6;
   background: #fff;
   border-radius: 8px;
   cursor: pointer;
 }
 .time-btn.selected {
-  background-color: #6176F7;
+  background-color: #6176f7;
   color: white;
-  border-color: #6176F7;
+  border-color: #6176f7;
 }
 .book-session-btn {
   width: 100%;
@@ -99,29 +97,28 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #6176F7;
+  background-color: #6176f7;
   color: white;
   transition: background-color 0.3s;
 }
 .book-session-btn:disabled {
-  background-color: #E7E9EB;
+  background-color: #e7e9eb;
   cursor: not-allowed;
 }
 
-/* --- Confirmation Card --- */
 .confirmation-card {
   background: #fff;
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   margin-top: 40px;
 }
 .confirmation-card h2 {
   font-size: 24px;
   margin: 0 0 10px 0;
-  color: #21212F;
+  color: #21212f;
 }
-/* ... (other confirmation styles) ... */
+
 .confirmation-details {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -137,20 +134,21 @@
   display: flex;
   gap: 15px;
 }
- .btn-cancel {
-   background: #F8F4FF;
-    border: 1px solid #CFD3D6;
-    color: #555;
+.btn-cancel {
+  background: #f8f4ff;
+  border: 1px solid #cfd3d6;
+  color: #555;
 }
 .btn-reschedule {
-    background: #6176F7;
-    border: 1px solid #6176F7;
-    color: white;
+  background: #6176f7;
+  border: 1px solid #6176f7;
+  color: white;
 }
-.btn-cancel, .btn-reschedule {
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
+.btn-cancel,
+.btn-reschedule {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }

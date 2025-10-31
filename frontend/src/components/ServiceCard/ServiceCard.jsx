@@ -1,6 +1,6 @@
-import React from 'react';
-import './ServiceCard.css';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./ServiceCard.css";
+import { useNavigate } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
       <div className="service-card-main">
         <div className="service-header">
           <div className="service-image-placeholder" style={{ backgroundColor: service.bgColor }}>
-            <img src={service.imageSrc || ''} alt={`${service.title} illustration`} />
+            <img src={service.imageSrc || ""} alt={`${service.title} illustration`} />
           </div>
           <div className="service-details">
             <h3>{service.title}</h3>
@@ -17,23 +17,28 @@ const ServiceCard = ({ service }) => {
             <span>${service.price}</span>
           </div>
         </div>
-        
+
         <h4>Service Info</h4>
         <p className="service-info-text">{service.serviceInfo}</p>
       </div>
-      
+
       <div className="instructor-section">
         <h4>Your Instructor</h4>
         <div className="instructor-details">
           <div className="instructor-image-placeholder">
-            <img src={service.instructorImageSrc || ''} alt={`${service.instructorName} portrait`} />
+            <img
+              src={service.instructorImageSrc || ""}
+              alt={`${service.instructorName} portrait`}
+            />
           </div>
           <div>
             <h5>{service.instructorName}</h5>
             <p>{service.instructorTitle}</p>
           </div>
         </div>
-        <button className="book-now-btn" onClick={() => navigate('/booking')}>Book Now</button>
+        <button className="book-now-btn" onClick={() => navigate("/booking")}>
+          Book Now
+        </button>
       </div>
     </div>
   );

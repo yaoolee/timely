@@ -1,9 +1,7 @@
-import React from 'react';
-import Button from '../Button/Button';
-import './Footer.css';
-import { Link } from 'react-router-dom';
-
-
+import React from "react";
+import Button from "../Button/Button";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -11,7 +9,9 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-column">
-            <div className="brand"><span>T</span>imely</div>
+            <div className="brand">
+              <span>T</span>imely
+            </div>
             <h4>Contact Us</h4>
             <p>Email: timely@gmail.com</p>
             <p>Call : +123 400 123</p>

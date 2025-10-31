@@ -1,47 +1,60 @@
-import React, { useMemo, useState } from 'react';
-import { AuthContext } from './authContextCore.js';
+import React, { useMemo, useState } from "react";
+import { AuthContext } from "./authContextCore.js";
+import { api } from "../api/client.js";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('user');
+    const saved = localStorage.getItem("user");
     return saved ? JSON.parse(saved) : null;
   });
 
   const login = async (email, password) => {
-    const reg = localStorage.getItem('registeredUser');
-    if (!reg) {
-      throw new Error('No account found. Please register first.');
+    try {
+      const { data } = await api.post("/auth/login", { email, password });
+      const nextUser = data.user;
+      setUser(nextUser);
+      localStorage.setItem("user", JSON.stringify(nextUser));
+      return nextUser;
+    } catch (err) {
+      const msg = err?.response?.data?.message || "Invalid email or password";
+      throw new Error(msg);
     }
-    const registered = JSON.parse(reg);
-    if (registered.email !== email || registered.password !== password) {
-      throw new Error('Invalid credentials.');
-    }
-    const nextUser = { username: registered.username, email: registered.email };
-    setUser(nextUser);
-    localStorage.setItem('user', JSON.stringify(nextUser));
-    return nextUser;
   };
 
   const register = async (username, email, password) => {
-    const registered = { username, email, password };
-    localStorage.setItem('registeredUser', JSON.stringify(registered));
-    // Require login after registration
-    return true;
+    try {
+      await api.post("/auth/register", { name: username, email, password });
+      return true;
+    } catch (err) {
+      const status = err?.response?.status;
+      if (status === 409) {
+        throw new Error("Email already in use");
+      }
+      const msg = err?.response?.data?.message || "Registration failed";
+      throw new Error(msg);
+    }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await api.post("/auth/logout");
+    } catch (err) {
+      console.warn("Logout request failed", err);
+    }
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   };
 
-  const value = useMemo(() => ({
-    user,
-    isAuthenticated: !!user,
-    login,
-    register,
-    logout,
-  }), [user]);
+  const value = useMemo(
+    () => ({
+      user,
+      isAuthenticated: !!user,
+      login,
+      register,
+      logout,
+    }),
+    [user]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-

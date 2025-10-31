@@ -1,14 +1,14 @@
 .service-page {
-  background-color: #6176F7;
+  background-color: #6176f7;
   min-height: 100vh;
 }
 .service-page .header {
-  background-color: #6176F7;
-  position: static; /* Remove absolute positioning from landing page */
+  background-color: #6176f7;
+  position: static;
 }
 
 .service-content {
-  padding: 40px 0 80px 0; /* Add more padding at the bottom */
+  padding: 40px 0 80px 0;
 }
 
 .container {
@@ -18,16 +18,16 @@
 }
 
 .service-title {
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 600;
   font-size: 40px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 40px;
 }
 
 .service-grid {
   display: grid;
-  /* 2-column grid, with a minimum width */
+
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 30px;
 }

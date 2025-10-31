@@ -13,7 +13,6 @@ router.get("/", async (req, res) => {
   res.json(slots);
 });
 
-// Admin CRUD for timeslots
 router.post("/", authMiddleware("admin"), async (req, res) => {
   const { serviceId, date, startTime, endTime } = req.body;
   const slot = await TimeSlot.create({ serviceId, date, startTime, endTime });

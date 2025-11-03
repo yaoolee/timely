@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./BookingPage.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { api } from "../../api/client.js";
 
 export default function BookingPage() {
   const [currentDate, setCurrentDate] = useState(() => new Date());
@@ -10,8 +11,10 @@ export default function BookingPage() {
   const [selectedTime, setSelectedTime] = useState(null);
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const serviceName = location.state?.serviceName || "";
   const instructorName = location.state?.instructorName || "";
+  const serviceId = location.state?.serviceId || "";
 
   const availableTimes = [
     "9:00 AM",
@@ -74,8 +77,26 @@ export default function BookingPage() {
     setBookingConfirmed(false);
   };
 
-  const handleBooking = () => {
-    setBookingConfirmed(true);
+  const fmtYmd = (date) => {
+    if (!date) return "";
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  };
+
+  const handleBooking = async () => {
+    try {
+      await api.post("/appointments/quick", {
+        serviceId,
+        date: fmtYmd(selectedDate),
+        startTime: selectedTime,
+      });
+      setBookingConfirmed(true);
+    } catch (e) {
+      console.error(e);
+      alert(e?.response?.data?.message || "Booking failed");
+    }
   };
 
   const getFormattedDate = (date) => {
@@ -184,8 +205,7 @@ export default function BookingPage() {
             </div>
 
             <div className="confirmation-actions">
-              <button className="btn-cancel">Cancel</button>
-              <button className="btn-reschedule">Reschedule</button>
+              <button className="btn-reschedule" onClick={() => navigate("/dashboard")}>Reschedule</button>
             </div>
           </div>
         )}

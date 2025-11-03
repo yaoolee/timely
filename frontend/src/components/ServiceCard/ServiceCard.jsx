@@ -41,6 +41,7 @@ const ServiceCard = ({ service }) => {
           onClick={() =>
             navigate("/booking", {
               state: {
+                serviceId: service.id,
                 serviceName: service.title,
                 instructorName: service.instructorName,
               },

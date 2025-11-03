@@ -131,14 +131,12 @@ const ServicePage = () => {
       <Footer />
     </div>
   ); */
-return (
+  return (
     <div className="service-page">
       <Header />
-
       <main className="service-content">
         <div className="container">
           <h1 className="service-title">Services Available</h1>
-
           <div className="service-grid">
             {services.map((service) => {
               const visuals = serviceVisuals[service.name] || defaultVisual;
@@ -146,6 +144,7 @@ return (
                 <ServiceCard
                   key={service._id}
                   service={{
+                    id: service._id,
                     title: service.name,
                     duration: `${service.duration} mins`,
                     price: service.price,
@@ -162,7 +161,6 @@ return (
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

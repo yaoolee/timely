@@ -1,0 +1,77 @@
+.userboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 140px 20px 60px; /* top and bottom padding fixed */
+}
+.userboard h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  padding-top: 32px;
+}
+.appt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+.appt-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.appt-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.appt-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.appt-title .instructor {
+  font-size: 14px;
+  color: #555;
+}
+.appt-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: #333;
+}
+.status {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f0f2f5;
+  font-weight: 600;
+}
+.status.booked { background: #e6f4ea; }
+.status.canceled { background: #fdecea; }
+.status.rescheduled { background: #e8f0fe; }
+.appt-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.appt-actions button,
+.reschedule-panel button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cfd3d6;
+  background: #fff;
+  cursor: pointer;
+}
+.reschedule-panel {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.reschedule-panel select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #cfd3d6;
+  background: #fff;
+}

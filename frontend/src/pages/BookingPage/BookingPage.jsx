@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import "./BookingPage.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import { useLocation } from "react-router-dom";
 
 export default function BookingPage() {
   const [currentDate, setCurrentDate] = useState(() => new Date());
-
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const location = useLocation();
+  const serviceName = location.state?.serviceName || "";
+  const instructorName = location.state?.instructorName || "";
 
   const availableTimes = [
     "9:00 AM",
@@ -35,14 +38,10 @@ export default function BookingPage() {
   const generateCalendarDays = () => {
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
-
     const daysInMonth = getDaysInMonth(year, month);
     const firstDayIndex = getFirstDayOfMonth(year, month);
-
     const paddingDays = Array(firstDayIndex).fill(null);
-
     const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-
     return [...paddingDays, ...daysArray];
   };
 
@@ -76,7 +75,6 @@ export default function BookingPage() {
   };
 
   const handleBooking = () => {
-    console.log("Booking Confirmed:", selectedDate, selectedTime);
     setBookingConfirmed(true);
   };
 
@@ -118,7 +116,12 @@ export default function BookingPage() {
                 day ? (
                   <button
                     key={index}
-                    className={`date-btn ${selectedDate?.getDate() === day && selectedDate?.getMonth() === currentDate.getMonth() ? "selected" : ""}`}
+                    className={`date-btn ${
+                      selectedDate?.getDate() === day &&
+                      selectedDate?.getMonth() === currentDate.getMonth()
+                        ? "selected"
+                        : ""
+                    }`}
                     onClick={() => handleDateSelect(day)}
                   >
                     {day}
@@ -157,12 +160,19 @@ export default function BookingPage() {
           <div className="confirmation-card">
             <h2>Appointment booked successfully!</h2>
             <p className="confirmation-subtitle">
-              Your booking has been scheduled for {getFormattedDate(selectedDate)}{" "}
-              at {selectedTime}.
+              Your booking has been scheduled for {getFormattedDate(selectedDate)} at {selectedTime}.
             </p>
 
             <div className="confirmation-details">
               <h4>Appointment Details</h4>
+              <div className="detail-item">
+                <span>Service</span>
+                <strong>{serviceName || "—"}</strong>
+              </div>
+              <div className="detail-item">
+                <span>Instructor</span>
+                <strong>{instructorName || "—"}</strong>
+              </div>
               <div className="detail-item">
                 <span>Date</span>
                 <strong>{getFormattedDate(selectedDate)}</strong>

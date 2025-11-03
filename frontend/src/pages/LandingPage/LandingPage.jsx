@@ -44,7 +44,7 @@ const LandingPage = () => {
                 </div>
                 <p>Duration: 60 mins</p>
                 <div className="service-card-footer">
-                  <span>$ 500</span>
+                  <span>$ 450</span>
                 </div>
               </div>
               <div className="service-card">
@@ -52,9 +52,9 @@ const LandingPage = () => {
                   <img src="./src/assets/design.png" alt="Service illustration" />
                   <div className="service-card-tag">Design</div>
                 </div>
-                <p>Duration: 40 mins</p>
+                <p>Duration: 30 mins</p>
                 <div className="service-card-footer">
-                  <span>$ 200</span>
+                  <span>$ 290</span>
                 </div>
               </div>
               <div className="service-card">
@@ -62,9 +62,9 @@ const LandingPage = () => {
                   <img src="./src/assets/math.png" alt="Service illustration" />
                   <div className="service-card-tag">Math</div>
                 </div>
-                <p>Duration: 30 mins</p>
+                <p>Duration: 60 mins</p>
                 <div className="service-card-footer">
-                  <span>$ 150</span>
+                  <span>$ 300</span>
                 </div>
               </div>
               <div className="service-card">
@@ -72,9 +72,9 @@ const LandingPage = () => {
                   <img src="./src/assets/business.png" alt="Service illustration" />
                   <div className="service-card-tag">Business</div>
                 </div>
-                <p>Duration: 45 mins</p>
+                <p>Duration: 60 mins</p>
                 <div className="service-card-footer">
-                  <span>$ 300</span>
+                  <span>$ 420</span>
                 </div>
               </div>
             </div>

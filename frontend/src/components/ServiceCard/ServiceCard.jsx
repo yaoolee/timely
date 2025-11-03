@@ -36,7 +36,17 @@ const ServiceCard = ({ service }) => {
             <p>{service.instructorTitle}</p>
           </div>
         </div>
-        <button className="book-now-btn" onClick={() => navigate("/booking")}>
+        <button
+          className="book-now-btn"
+          onClick={() =>
+            navigate("/booking", {
+              state: {
+                serviceName: service.title,
+                instructorName: service.instructorName,
+              },
+            })
+          }
+        >
           Book Now
         </button>
       </div>

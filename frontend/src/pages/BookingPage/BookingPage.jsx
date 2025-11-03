@@ -157,7 +157,7 @@ export default function BookingPage() {
           <div className="confirmation-card">
             <h2>Appointment booked successfully!</h2>
             <p className="confirmation-subtitle">
-              Your booking with Mr. Cooper has been scheduled for {getFormattedDate(selectedDate)}{" "}
+              Your booking has been scheduled for {getFormattedDate(selectedDate)}{" "}
               at {selectedTime}.
             </p>
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./UserBoard.css";
@@ -139,6 +140,9 @@ export default function UserBoard() {
       <Header />
       <div className="userboard">
         <h1 className="welcome">Welcome back, {firstName}!</h1>
+        <div className="userboard-actions" style={{ marginBottom: 16 }}>
+          <Link to="/booking" className="btn-reschedule">Book New Session</Link>
+        </div>
         <h2>Upcoming Appointments</h2>
         {content}
       </div>

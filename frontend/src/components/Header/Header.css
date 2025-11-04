@@ -82,3 +82,18 @@
 svg {
   padding-top: 10px;
 }
+
+
+@media (max-width: 600px) {
+  .header .logout-btn {
+    height: 40px; 
+    padding: 8px 16px; 
+    font-size: 14px; 
+    line-height: 20px;
+    border-radius: 8px; 
+    width: auto; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

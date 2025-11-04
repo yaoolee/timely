@@ -133,6 +133,7 @@
 .confirmation-actions {
   display: flex;
   gap: 15px;
+  padding-top: 24px;
 }
 .btn-cancel {
   background: #f8f4ff;
@@ -152,3 +153,4 @@
   font-weight: 600;
   cursor: pointer;
 }
+

@@ -94,3 +94,22 @@
 .userboard h2{
   padding:16px 0;
 }
+
+/* Book New Session button uses same primary styling as reschedule */
+.userboard-actions .btn-reschedule {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #6176f7;
+  background: #6176f7;
+  color: #fff;
+  text-decoration: none;
+}
+.userboard-actions .btn-reschedule:hover {
+  background: #5063d6;
+  border-color: #5063d6;
+}
+.userboard-actions .btn-reschedule:focus {
+  outline: 2px solid rgba(97, 118, 247, 0.35);
+  outline-offset: 2px;
+}

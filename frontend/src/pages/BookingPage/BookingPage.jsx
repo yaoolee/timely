@@ -87,6 +87,11 @@ export default function BookingPage() {
 
   const handleBooking = async () => {
     try {
+      if (!serviceId) {
+        alert("Please pick a service first.");
+        navigate("/service");
+        return;
+      }
       await api.post("/appointments/quick", {
         serviceId,
         date: fmtYmd(selectedDate),
@@ -111,6 +116,20 @@ export default function BookingPage() {
   return (
     <>
       <Header />
+      {!serviceId ? (
+        <div className="booking-container">
+          <h1 className="booking-title">Booking Calendar</h1>
+          <div className="confirmation-card">
+            <h2>Please pick a service first</h2>
+            <p className="confirmation-subtitle">
+              Go to Services to choose what you want to book, then return here to select a date and time.
+            </p>
+            <div className="confirmation-actions">
+              <button className="btn-reschedule" onClick={() => navigate("/service")}>Browse Services</button>
+            </div>
+          </div>
+        </div>
+      ) : (
       <div className="booking-container">
         <h1 className="booking-title">Booking Calendar</h1>
 
@@ -205,11 +224,12 @@ export default function BookingPage() {
             </div>
 
             <div className="confirmation-actions">
-              <button className="btn-reschedule" onClick={() => navigate("/dashboard")}>Reschedule</button>
+              <button className="btn-reschedule" onClick={() => navigate("/dashboard")}>My Appointments</button>
             </div>
           </div>
         )}
       </div>
+      )}
       <Footer />
     </>
   );

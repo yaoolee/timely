@@ -3,14 +3,17 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./UserBoard.css";
 import { api } from "../../api/client.js";
+import { useAuth } from "../../auth/useAuth.js";
 
 export default function UserBoard() {
+  const { user } = useAuth();
   const [appts, setAppts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
   const [reschedulingId, setReschedulingId] = useState(null);
   const [slots, setSlots] = useState([]);
   const [selectedSlotId, setSelectedSlotId] = useState("");
+  const firstName = (user?.name || user?.username || user?.email || "").split(" ")[0] || "there";
 
   const load = async () => {
     try {
@@ -59,12 +62,12 @@ export default function UserBoard() {
 
   const cancelAppt = async (id) => {
     setErr("");
-    setAppts((prev) => prev.filter((a) => a._id !== id)); // optimistic UI
+    setAppts((prev) => prev.filter((a) => a._id !== id)); 
     try {
       await api.delete(`/appointments/${id}`);
     } catch (e) {
       setErr(e?.response?.data?.message || "Failed to cancel appointment");
-      await load(); // revert from server
+      await load(); 
     }
   };
 
@@ -92,7 +95,7 @@ export default function UserBoard() {
             </div>
             <div className="appt-actions">
               <button onClick={() => cancelAppt(a._id)}>Cancel</button>
-              <button onClick={() => startReschedule(a)}>Reschedule</button>
+              <button className="btn-reschedule" onClick={() => startReschedule(a)}>Reschedule</button>
             </div>
 
             {reschedulingId === a._id && (
@@ -128,13 +131,15 @@ export default function UserBoard() {
         ))}
       </ul>
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appts, loading, err, reschedulingId, slots, selectedSlotId]);
 
   return (
     <>
       <Header />
       <div className="userboard">
-        <h1>Your Appointments</h1>
+        <h1 className="welcome">Welcome back, {firstName}!</h1>
+        <h2>Upcoming Appointments</h2>
         {content}
       </div>
       <Footer />

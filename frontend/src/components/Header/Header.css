@@ -68,6 +68,13 @@
   font-size: 16px;
   font-weight: 500;
 }
+.logout-btn {
+  width: auto;
+  padding: 12px 24px;
+  background: #ffa337;
+  color: #ffffff;
+  text-decoration: none;
+}
 .signup-button {
   width: 105px;
 }

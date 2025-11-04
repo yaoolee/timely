@@ -64,6 +64,21 @@
   background: #fff;
   cursor: pointer;
 }
+
+/* Reschedule button primary styling */
+.appt-actions .btn-reschedule {
+  background: #6176f7;
+  border-color: #6176f7;
+  color: #fff;
+}
+.appt-actions .btn-reschedule:hover {
+  background: #5063d6;
+  border-color: #5063d6;
+}
+.appt-actions .btn-reschedule:focus {
+  outline: 2px solid rgba(97, 118, 247, 0.35);
+  outline-offset: 2px;
+}
 .reschedule-panel {
   display: flex;
   gap: 8px;
@@ -74,4 +89,8 @@
   border-radius: 8px;
   border: 1px solid #cfd3d6;
   background: #fff;
+}
+
+.userboard h2{
+  padding:16px 0;
 }

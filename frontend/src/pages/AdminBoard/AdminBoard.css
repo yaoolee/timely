@@ -1,0 +1,192 @@
+
+
+:root {
+  --primary: #6176f7;
+  --primary-600: #5063d6;
+  --border: #cfd3d6;
+  --text: #21212f;
+  --muted: #555;
+  --card-bg: #fff;
+}
+
+.adminboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 140px 20px 60px;
+}
+
+.adminboard h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: var(--text);
+  padding-top: 32px;
+
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.tabs button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabs button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.tabs button.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.panel {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.panel h2 {
+  margin: 12px 0;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 14px;
+}
+
+.grid .row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.grid input,
+.grid select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.grid input:focus,
+.grid select:focus {
+  outline: 2px solid rgba(97, 118, 247, 0.25);
+  outline-offset: 1px;
+  border-color: var(--primary);
+}
+
+.grid button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.grid button[type="submit"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.grid button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-main {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item-main strong { color: var(--text); }
+.item-main span { color: var(--muted); font-size: 14px; }
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background: #f7f9fc;
+}
+
+.actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.actions button.danger {
+  border-color: #f2b8b5;
+  color: #b42318;
+  background: #fff5f5;
+}
+
+.status {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+}
+.status.booked { background: #e6f4ea; }
+.status.canceled { background: #fdecea; }
+.status.rescheduled { background: #e8f0fe; }
+
+@media (max-width: 640px) {
+  .item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

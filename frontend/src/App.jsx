@@ -9,6 +9,8 @@ import BookingPage from "./pages/BookingPage/BookingPage.jsx";
 import { AuthProvider } from "./auth/AuthContext.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import UserBoard from "./pages/UserBoard/UserBoard.jsx";
+import AdminBoard from "./pages/AdminBoard/AdminBoard.jsx";
+import AdminRoute from "./auth/AdminRoute.jsx";
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/booking" element={<BookingPage />} />
               <Route path="/dashboard" element={<UserBoard />} />
+            </Route>
+            <Route element={<AdminRoute />}>
+              <Route path="/admin" element={<AdminBoard />} />
             </Route>
           </Routes>
         </AuthProvider>

@@ -8,7 +8,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [active, setActive] = useState("home");
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -17,8 +17,10 @@ const Header = () => {
       setActive("services");
     } else if (location.pathname.startsWith("/booking")) {
       setActive("");
-    }else if (location.pathname.startsWith("/dashboard")) {
-      setActive("");
+    } else if (location.pathname.startsWith("/dashboard")) {
+      setActive("dashboard"); // <-- highlight My Dashboard
+    } else if (location.pathname.startsWith("/admin")) {
+      setActive("admin");
     }
   }, [location.pathname]);
 
@@ -66,6 +68,24 @@ const Header = () => {
             >
               Contact
             </a>
+             {isAuthenticated && user?.role !== "admin" && (
+              <Link
+                to="/dashboard"
+                className={active === "dashboard" ? "active" : ""}
+                onClick={() => setActive("dashboard")}
+              >
+                My Dashboard
+              </Link>
+            )}
+            {user?.role === "admin" && (
+              <Link
+                to="/admin"
+                className={active === "admin" ? "active" : ""}
+                onClick={() => setActive("admin")}
+              >
+                Admin
+              </Link>
+            )}
           </nav>
           <div className="header-actions">
             {isAuthenticated ? (

@@ -3,6 +3,8 @@ import Appointment from "../models/Appointment.js";
 import TimeSlot from "../models/TimeSlot.js";
 import Service from "../models/Service.js";
 import { authMiddleware } from "../middleware/auth.js";
+import User from "../models/User.js";
+import { sendBookingConfirmation } from "../utils/sendEmail.js";
 
 const router = express.Router();
 
@@ -22,7 +24,29 @@ router.post("/", authMiddleware(), async (req, res) => {
   slot.isBooked = true;
   await slot.save();
 
-  res.status(201).json(appt);
+  const populated = await Appointment.findById(appt._id).populate("serviceId timeSlotId");
+
+  (async () => {
+    try {
+      const user = await User.findById(req.user.id);
+      if (user) {
+        await sendBookingConfirmation({
+          to: user.email,
+          name: user.name,
+          serviceName: populated?.serviceId?.name,
+          instructorName: populated?.serviceId?.instructorName,
+          date: populated?.timeSlotId?.date,
+          startTime: populated?.timeSlotId?.startTime,
+          endTime: populated?.timeSlotId?.endTime,
+          appointmentId: populated?._id?.toString(),
+        });
+      }
+    } catch (e) {
+      console.warn("SendGrid booking email failed:", e?.message);
+    }
+  })();
+
+  res.status(201).json(populated);
 });
 
 router.delete("/:id", authMiddleware(), async (req, res) => {
@@ -119,6 +143,27 @@ router.post("/quick", authMiddleware(), async (req, res) => {
   });
 
   const populated = await Appointment.findById(appt._id).populate("serviceId timeSlotId");
+
+  (async () => {
+    try {
+      const user = await User.findById(req.user.id);
+      if (user) {
+        await sendBookingConfirmation({
+          to: user.email,
+          name: user.name,
+          serviceName: populated?.serviceId?.name,
+          instructorName: populated?.serviceId?.instructorName,
+          date: populated?.timeSlotId?.date,
+          startTime: populated?.timeSlotId?.startTime,
+          endTime: populated?.timeSlotId?.endTime,
+          appointmentId: populated?._id?.toString(),
+        });
+      }
+    } catch (e) {
+      console.warn("SendGrid booking email failed:", e?.message);
+    }
+  })();
+
   return res.status(201).json(populated);
 });
 

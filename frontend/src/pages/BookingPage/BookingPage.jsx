@@ -122,113 +122,119 @@ export default function BookingPage() {
           <div className="confirmation-card">
             <h2>Please pick a service first</h2>
             <p className="confirmation-subtitle">
-              Go to Services to choose what you want to book, then return here to select a date and time.
+              Go to Services to choose what you want to book, then return here to select a date and
+              time.
             </p>
             <div className="confirmation-actions">
-              <button className="btn-reschedule" onClick={() => navigate("/service")}>Browse Services</button>
+              <button className="btn-reschedule" onClick={() => navigate("/service")}>
+                Browse Services
+              </button>
             </div>
           </div>
         </div>
       ) : (
-      <div className="booking-container">
-        <h1 className="booking-title">Booking Calendar</h1>
+        <div className="booking-container">
+          <h1 className="booking-title">Booking Calendar</h1>
 
-        <div className="calendar-wrapper">
-          <div className="calendar-card">
-            <div className="calendar-header">
-              <button onClick={handlePrevMonth}>&lt;</button>
-              <h3>
-                {monthName} {year}
-              </h3>
-              <button onClick={handleNextMonth}>&gt;</button>
+          <div className="calendar-wrapper">
+            <div className="calendar-card">
+              <div className="calendar-header">
+                <button onClick={handlePrevMonth}>&lt;</button>
+                <h3>
+                  {monthName} {year}
+                </h3>
+                <button onClick={handleNextMonth}>&gt;</button>
+              </div>
+              <div className="calendar-grid days">
+                <span>Su</span>
+                <span>Mo</span>
+                <span>Tu</span>
+                <span>We</span>
+                <span>Th</span>
+                <span>Fr</span>
+                <span>Sa</span>
+              </div>
+              <div className="calendar-grid dates">
+                {generateCalendarDays().map((day, index) =>
+                  day ? (
+                    <button
+                      key={index}
+                      className={`date-btn ${
+                        selectedDate?.getDate() === day &&
+                        selectedDate?.getMonth() === currentDate.getMonth()
+                          ? "selected"
+                          : ""
+                      }`}
+                      onClick={() => handleDateSelect(day)}
+                    >
+                      {day}
+                    </button>
+                  ) : (
+                    <div key={index} className="padding-day"></div>
+                  )
+                )}
+              </div>
             </div>
-            <div className="calendar-grid days">
-              <span>Su</span>
-              <span>Mo</span>
-              <span>Tu</span>
-              <span>We</span>
-              <span>Th</span>
-              <span>Fr</span>
-              <span>Sa</span>
-            </div>
-            <div className="calendar-grid dates">
-              {generateCalendarDays().map((day, index) =>
-                day ? (
+
+            <div className="times-card">
+              <h3>Available times</h3>
+              <div className="times-grid">
+                {availableTimes.map((time) => (
                   <button
-                    key={index}
-                    className={`date-btn ${
-                      selectedDate?.getDate() === day &&
-                      selectedDate?.getMonth() === currentDate.getMonth()
-                        ? "selected"
-                        : ""
-                    }`}
-                    onClick={() => handleDateSelect(day)}
+                    key={time}
+                    className={`time-btn ${selectedTime === time ? "selected" : ""}`}
+                    onClick={() => handleTimeSelect(time)}
                   >
-                    {day}
+                    {time}
                   </button>
-                ) : (
-                  <div key={index} className="padding-day"></div>
-                )
-              )}
+                ))}
+              </div>
+              <button
+                className="book-session-btn"
+                disabled={!selectedDate || !selectedTime}
+                onClick={handleBooking}
+              >
+                Book Session
+              </button>
             </div>
           </div>
 
-          <div className="times-card">
-            <h3>Available times</h3>
-            <div className="times-grid">
-              {availableTimes.map((time) => (
-                <button
-                  key={time}
-                  className={`time-btn ${selectedTime === time ? "selected" : ""}`}
-                  onClick={() => handleTimeSelect(time)}
-                >
-                  {time}
+          {bookingConfirmed && (
+            <div className="confirmation-card">
+              <h2>Appointment booked successfully!</h2>
+              <p className="confirmation-subtitle">
+                Your booking has been scheduled for {getFormattedDate(selectedDate)} at{" "}
+                {selectedTime}.
+              </p>
+
+              <div className="confirmation-details">
+                <h4>Appointment Details</h4>
+                <div className="detail-item">
+                  <span>Service</span>
+                  <strong>{serviceName || "—"}</strong>
+                </div>
+                <div className="detail-item">
+                  <span>Instructor</span>
+                  <strong>{instructorName || "—"}</strong>
+                </div>
+                <div className="detail-item">
+                  <span>Date</span>
+                  <strong>{getFormattedDate(selectedDate)}</strong>
+                </div>
+                <div className="detail-item">
+                  <span>Time</span>
+                  <strong>{selectedTime}</strong>
+                </div>
+              </div>
+
+              <div className="confirmation-actions">
+                <button className="btn-reschedule" onClick={() => navigate("/dashboard")}>
+                  My Appointments
                 </button>
-              ))}
+              </div>
             </div>
-            <button
-              className="book-session-btn"
-              disabled={!selectedDate || !selectedTime}
-              onClick={handleBooking}
-            >
-              Book Session
-            </button>
-          </div>
+          )}
         </div>
-
-        {bookingConfirmed && (
-          <div className="confirmation-card">
-            <h2>Appointment booked successfully!</h2>
-            <p className="confirmation-subtitle">
-              Your booking has been scheduled for {getFormattedDate(selectedDate)} at {selectedTime}.
-            </p>
-
-            <div className="confirmation-details">
-              <h4>Appointment Details</h4>
-              <div className="detail-item">
-                <span>Service</span>
-                <strong>{serviceName || "—"}</strong>
-              </div>
-              <div className="detail-item">
-                <span>Instructor</span>
-                <strong>{instructorName || "—"}</strong>
-              </div>
-              <div className="detail-item">
-                <span>Date</span>
-                <strong>{getFormattedDate(selectedDate)}</strong>
-              </div>
-              <div className="detail-item">
-                <span>Time</span>
-                <strong>{selectedTime}</strong>
-              </div>
-            </div>
-
-            <div className="confirmation-actions">
-              <button className="btn-reschedule" onClick={() => navigate("/dashboard")}>My Appointments</button>
-            </div>
-          </div>
-        )}
-      </div>
       )}
       <Footer />
     </>

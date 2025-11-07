@@ -63,12 +63,12 @@ export default function UserBoard() {
 
   const cancelAppt = async (id) => {
     setErr("");
-    setAppts((prev) => prev.filter((a) => a._id !== id)); 
+    setAppts((prev) => prev.filter((a) => a._id !== id));
     try {
       await api.delete(`/appointments/${id}`);
     } catch (e) {
       setErr(e?.response?.data?.message || "Failed to cancel appointment");
-      await load(); 
+      await load();
     }
   };
 
@@ -96,15 +96,14 @@ export default function UserBoard() {
             </div>
             <div className="appt-actions">
               <button onClick={() => cancelAppt(a._id)}>Cancel</button>
-              <button className="btn-reschedule" onClick={() => startReschedule(a)}>Reschedule</button>
+              <button className="btn-reschedule" onClick={() => startReschedule(a)}>
+                Reschedule
+              </button>
             </div>
 
             {reschedulingId === a._id && (
               <div className="reschedule-panel">
-                <select
-                  value={selectedSlotId}
-                  onChange={(e) => setSelectedSlotId(e.target.value)}
-                >
+                <select value={selectedSlotId} onChange={(e) => setSelectedSlotId(e.target.value)}>
                   <option value="" disabled>
                     Select a new time
                   </option>
@@ -132,7 +131,7 @@ export default function UserBoard() {
         ))}
       </ul>
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appts, loading, err, reschedulingId, slots, selectedSlotId]);
 
   return (
@@ -141,7 +140,9 @@ export default function UserBoard() {
       <div className="userboard">
         <h1 className="welcome">Welcome back, {firstName}!</h1>
         <div className="userboard-actions" style={{ marginBottom: 16 }}>
-          <Link to="/booking" className="btn-reschedule">Book New Session</Link>
+          <Link to="/booking" className="btn-reschedule">
+            Book New Session
+          </Link>
         </div>
         <h2>Upcoming Appointments</h2>
         {content}

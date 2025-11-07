@@ -7,7 +7,9 @@ import { authMiddleware } from "../middleware/auth.js";
 const router = express.Router();
 
 router.get("/", authMiddleware("admin"), async (req, res) => {
-  const users = await User.find({}, "name email role createdAt").sort({ createdAt: -1 }).select("-passwordHash");
+  const users = await User.find({}, "name email role createdAt")
+    .sort({ createdAt: -1 })
+    .select("-passwordHash");
   res.json(users);
 });
 

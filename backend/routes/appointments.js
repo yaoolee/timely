@@ -86,8 +86,7 @@ router.put("/:id/reschedule", authMiddleware(), async (req, res) => {
 // Quick booking for UI that doesn’t load timeslots
 router.post("/quick", authMiddleware(), async (req, res) => {
   const { serviceId, date, startTime } = req.body;
-  if (!serviceId || !date || !startTime)
-    return res.status(400).json({ message: "Missing fields" });
+  if (!serviceId || !date || !startTime) return res.status(400).json({ message: "Missing fields" });
 
   const service = await Service.findById(serviceId);
   if (!service) return res.status(404).json({ message: "Service not found" });

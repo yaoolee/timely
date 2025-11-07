@@ -14,7 +14,15 @@ function addMinutes(hhmm, minutes) {
 
 export default function AdminBoard() {
   const [services, setServices] = useState([]);
-  const [svcForm, setSvcForm] = useState({ id: "", name: "", description: "", duration: "", price: "", instructorName: "", instructorTitle: "" });
+  const [svcForm, setSvcForm] = useState({
+    id: "",
+    name: "",
+    description: "",
+    duration: "",
+    price: "",
+    instructorName: "",
+    instructorTitle: "",
+  });
   const [slots, setSlots] = useState([]);
   const [slotForm, setSlotForm] = useState({ serviceId: "", date: "", startTime: "", endTime: "" });
   const [appointments, setAppointments] = useState([]);
@@ -84,7 +92,15 @@ export default function AdminBoard() {
       } else {
         await api.post("/services", payload);
       }
-      setSvcForm({ id: "", name: "", description: "", duration: "", price: "", instructorName: "", instructorTitle: "" });
+      setSvcForm({
+        id: "",
+        name: "",
+        description: "",
+        duration: "",
+        price: "",
+        instructorName: "",
+        instructorTitle: "",
+      });
       await loadServices();
     } catch (e2) {
       setErr(e2?.response?.data?.message || "Failed to save service");
@@ -201,13 +217,25 @@ export default function AdminBoard() {
           <button className={tab === "services" ? "active" : ""} onClick={() => setTab("services")}>
             Services
           </button>
-          <button className={tab === "timeslots" ? "active" : ""} onClick={() => setTab("timeslots")}>
+          <button
+            className={tab === "timeslots" ? "active" : ""}
+            onClick={() => setTab("timeslots")}
+          >
             Time Slots
           </button>
-          <button className={tab === "appointments" ? "active" : ""} onClick={() => setTab("appointments")}>
+          <button
+            className={tab === "appointments" ? "active" : ""}
+            onClick={() => setTab("appointments")}
+          >
             Appointments
           </button>
-          <button className={tab === "users" ? "active" : ""} onClick={async () => { setTab("users"); await loadUsers(); }}>
+          <button
+            className={tab === "users" ? "active" : ""}
+            onClick={async () => {
+              setTab("users");
+              await loadUsers();
+            }}
+          >
             Users
           </button>
         </div>
@@ -216,16 +244,55 @@ export default function AdminBoard() {
           <div className="panel">
             <h2>Manage Services</h2>
             <form className="grid" onSubmit={submitService}>
-              <input placeholder="Name" value={svcForm.name} onChange={(e) => setSvcForm({ ...svcForm, name: e.target.value })} />
-              <input placeholder="Duration (min)" type="number" value={svcForm.duration} onChange={(e) => setSvcForm({ ...svcForm, duration: e.target.value })} />
-              <input placeholder="Price" type="number" value={svcForm.price} onChange={(e) => setSvcForm({ ...svcForm, price: e.target.value })} />
-              <input placeholder="Instructor Name" value={svcForm.instructorName} onChange={(e) => setSvcForm({ ...svcForm, instructorName: e.target.value })} />
-              <input placeholder="Instructor Title" value={svcForm.instructorTitle} onChange={(e) => setSvcForm({ ...svcForm, instructorTitle: e.target.value })} />
-              <input placeholder="Description" value={svcForm.description} onChange={(e) => setSvcForm({ ...svcForm, description: e.target.value })} />
+              <input
+                placeholder="Name"
+                value={svcForm.name}
+                onChange={(e) => setSvcForm({ ...svcForm, name: e.target.value })}
+              />
+              <input
+                placeholder="Duration (min)"
+                type="number"
+                value={svcForm.duration}
+                onChange={(e) => setSvcForm({ ...svcForm, duration: e.target.value })}
+              />
+              <input
+                placeholder="Price"
+                type="number"
+                value={svcForm.price}
+                onChange={(e) => setSvcForm({ ...svcForm, price: e.target.value })}
+              />
+              <input
+                placeholder="Instructor Name"
+                value={svcForm.instructorName}
+                onChange={(e) => setSvcForm({ ...svcForm, instructorName: e.target.value })}
+              />
+              <input
+                placeholder="Instructor Title"
+                value={svcForm.instructorTitle}
+                onChange={(e) => setSvcForm({ ...svcForm, instructorTitle: e.target.value })}
+              />
+              <input
+                placeholder="Description"
+                value={svcForm.description}
+                onChange={(e) => setSvcForm({ ...svcForm, description: e.target.value })}
+              />
               <div className="row">
                 <button type="submit">{svcForm.id ? "Update" : "Create"}</button>
                 {svcForm.id && (
-                  <button type="button" onClick={() => setSvcForm({ id: "", name: "", description: "", duration: "", price: "", instructorName: "", instructorTitle: "" })}>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSvcForm({
+                        id: "",
+                        name: "",
+                        description: "",
+                        duration: "",
+                        price: "",
+                        instructorName: "",
+                        instructorTitle: "",
+                      })
+                    }
+                  >
                     Reset
                   </button>
                 )}
@@ -237,8 +304,12 @@ export default function AdminBoard() {
                 <li key={s._id} className="item">
                   <div className="item-main">
                     <strong>{s.name}</strong>
-                    <span>{s.duration} min • ${s.price ?? 0}</span>
-                    <span>{s.instructorName} {s.instructorTitle ? `• ${s.instructorTitle}` : ""}</span>
+                    <span>
+                      {s.duration} min • ${s.price ?? 0}
+                    </span>
+                    <span>
+                      {s.instructorName} {s.instructorTitle ? `• ${s.instructorTitle}` : ""}
+                    </span>
                   </div>
                   <div className="actions">
                     <button onClick={() => startEditService(s)}>Edit</button>
@@ -254,7 +325,10 @@ export default function AdminBoard() {
           <div className="panel">
             <h2>Manage Time Slots</h2>
             <form className="grid" onSubmit={submitSlot}>
-              <select value={slotForm.serviceId} onChange={(e) => onSlotServiceChange(e.target.value)}>
+              <select
+                value={slotForm.serviceId}
+                onChange={(e) => onSlotServiceChange(e.target.value)}
+              >
                 <option value="">Select service</option>
                 {services.map((s) => (
                   <option key={s._id} value={s._id}>
@@ -262,10 +336,25 @@ export default function AdminBoard() {
                   </option>
                 ))}
               </select>
-              <input type="date" value={slotForm.date} onChange={(e) => setSlotForm({ ...slotForm, date: e.target.value })} />
-              <input type="time" value={slotForm.startTime} onChange={(e) => setSlotForm({ ...slotForm, startTime: e.target.value })} />
-              <input type="time" value={prefEndTime} onChange={(e) => setSlotForm({ ...slotForm, endTime: e.target.value })} />
-              <button type="submit" disabled={!slotForm.serviceId || !slotForm.date || !slotForm.startTime}>
+              <input
+                type="date"
+                value={slotForm.date}
+                onChange={(e) => setSlotForm({ ...slotForm, date: e.target.value })}
+              />
+              <input
+                type="time"
+                value={slotForm.startTime}
+                onChange={(e) => setSlotForm({ ...slotForm, startTime: e.target.value })}
+              />
+              <input
+                type="time"
+                value={prefEndTime}
+                onChange={(e) => setSlotForm({ ...slotForm, endTime: e.target.value })}
+              />
+              <button
+                type="submit"
+                disabled={!slotForm.serviceId || !slotForm.date || !slotForm.startTime}
+              >
                 Add Slot
               </button>
             </form>
@@ -275,11 +364,15 @@ export default function AdminBoard() {
                 <li key={sl._id} className="item">
                   <div className="item-main">
                     <strong>{sl.date}</strong>
-                    <span>{sl.startTime} - {sl.endTime}</span>
+                    <span>
+                      {sl.startTime} - {sl.endTime}
+                    </span>
                     <span>{sl.isBooked ? "Booked" : "Open"}</span>
                   </div>
                   <div className="actions">
-                    <button onClick={() => deleteSlot(sl._id)} disabled={sl.isBooked}>Delete</button>
+                    <button onClick={() => deleteSlot(sl._id)} disabled={sl.isBooked}>
+                      Delete
+                    </button>
                   </div>
                 </li>
               ))}
@@ -296,7 +389,9 @@ export default function AdminBoard() {
                   <div className="item-main">
                     <strong>{a?.serviceId?.name || "Service"}</strong>
                     <span>{a?.userId?.email || a?.userId?.name || "User"}</span>
-                    <span>{a?.timeSlotId?.date} • {a?.timeSlotId?.startTime} - {a?.timeSlotId?.endTime}</span>
+                    <span>
+                      {a?.timeSlotId?.date} • {a?.timeSlotId?.startTime} - {a?.timeSlotId?.endTime}
+                    </span>
                     <span className={`status ${a.status}`}>{a.status}</span>
                   </div>
                   <div className="actions">
@@ -346,7 +441,9 @@ export default function AdminBoard() {
                       </div>
                       <div className="actions">
                         <button onClick={() => startEditUser(u)}>Edit</button>
-                        <button className="danger" onClick={() => deleteUser(u._id, u.email)}>Remove</button>
+                        <button className="danger" onClick={() => deleteUser(u._id, u.email)}>
+                          Remove
+                        </button>
                       </div>
                     </>
                   )}

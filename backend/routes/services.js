@@ -17,7 +17,14 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", authMiddleware("admin"), async (req, res) => {
   const { name, description, duration, price, instructorName, instructorTitle } = req.body;
-  const s = await Service.create({ name, description, duration, price, instructorName, instructorTitle });
+  const s = await Service.create({
+    name,
+    description,
+    duration,
+    price,
+    instructorName,
+    instructorTitle,
+  });
   res.status(201).json(s);
 });
 

@@ -19,7 +19,7 @@
   background: #fff;
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 .appt-main {
   display: flex;
@@ -48,9 +48,15 @@
   background: #f0f2f5;
   font-weight: 600;
 }
-.status.booked { background: #e6f4ea; }
-.status.canceled { background: #fdecea; }
-.status.rescheduled { background: #e8f0fe; }
+.status.booked {
+  background: #e6f4ea;
+}
+.status.canceled {
+  background: #fdecea;
+}
+.status.rescheduled {
+  background: #e8f0fe;
+}
 .appt-actions {
   display: flex;
   gap: 8px;
@@ -91,8 +97,8 @@
   background: #fff;
 }
 
-.userboard h2{
-  padding:16px 0;
+.userboard h2 {
+  padding: 16px 0;
 }
 
 /* Book New Session button uses same primary styling as reschedule */

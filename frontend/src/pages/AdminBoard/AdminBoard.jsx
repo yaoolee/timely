@@ -18,6 +18,9 @@ export default function AdminBoard() {
   const [slots, setSlots] = useState([]);
   const [slotForm, setSlotForm] = useState({ serviceId: "", date: "", startTime: "", endTime: "" });
   const [appointments, setAppointments] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [editingUserId, setEditingUserId] = useState("");
+  const [userForm, setUserForm] = useState({ name: "", role: "user" });
   const [tab, setTab] = useState("services");
   const [err, setErr] = useState("");
 
@@ -33,6 +36,10 @@ export default function AdminBoard() {
     const { data } = await api.get("/appointments");
     setAppointments(data);
   };
+  const loadUsers = async () => {
+    const { data } = await api.get("/users");
+    setUsers(data);
+  };
 
   useEffect(() => {
     (async () => {
@@ -40,6 +47,7 @@ export default function AdminBoard() {
         setErr("");
         await loadServices();
         await loadAppointments();
+        await loadUsers();
       } catch (e) {
         setErr(e?.response?.data?.message || "Failed to load admin data");
       }
@@ -151,6 +159,37 @@ export default function AdminBoard() {
     }
   };
 
+  const startEditUser = (u) => {
+    setEditingUserId(u._id);
+    setUserForm({ name: u.name || "", role: u.role || "user" });
+  };
+  const cancelEditUser = () => {
+    setEditingUserId("");
+    setUserForm({ name: "", role: "user" });
+  };
+  const saveUser = async (id) => {
+    try {
+      setErr("");
+      await api.put(`/users/${id}`, { name: userForm.name, role: userForm.role });
+      setEditingUserId("");
+      setUserForm({ name: "", role: "user" });
+      await loadUsers();
+    } catch (e) {
+      setErr(e?.response?.data?.message || "Failed to update user");
+    }
+  };
+  const deleteUser = async (id, email) => {
+    if (!window.confirm(`Remove user "${email}"? This will also clear their appointments.`)) return;
+    try {
+      setErr("");
+      await api.delete(`/users/${id}`);
+      setUsers((prev) => prev.filter((u) => u._id !== id));
+    } catch (e) {
+      setErr(e?.response?.data?.message || "Failed to delete user");
+      await loadUsers();
+    }
+  };
+
   return (
     <>
       <Header />
@@ -167,6 +206,9 @@ export default function AdminBoard() {
           </button>
           <button className={tab === "appointments" ? "active" : ""} onClick={() => setTab("appointments")}>
             Appointments
+          </button>
+          <button className={tab === "users" ? "active" : ""} onClick={async () => { setTab("users"); await loadUsers(); }}>
+            Users
           </button>
         </div>
 
@@ -260,6 +302,54 @@ export default function AdminBoard() {
                   <div className="actions">
                     <button onClick={() => cancelAppointment(a._id)}>Cancel</button>
                   </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {tab === "users" && (
+          <div className="panel">
+            <h2>Manage Users</h2>
+            <ul className="list">
+              {users.map((u) => (
+                <li key={u._id} className="item">
+                  {editingUserId === u._id ? (
+                    <>
+                      <div className="item-main" style={{ gap: 8 }}>
+                        <strong>{u.email}</strong>
+                        <input
+                          placeholder="Name"
+                          value={userForm.name}
+                          onChange={(e) => setUserForm((f) => ({ ...f, name: e.target.value }))}
+                        />
+                        <select
+                          value={userForm.role}
+                          onChange={(e) => setUserForm((f) => ({ ...f, role: e.target.value }))}
+                        >
+                          <option value="user">user</option>
+                          <option value="admin">admin</option>
+                        </select>
+                      </div>
+                      <div className="actions">
+                        <button onClick={() => saveUser(u._id)}>Save</button>
+                        <button onClick={cancelEditUser}>Cancel</button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="item-main">
+                        <strong>{u.name}</strong>
+                        <span>{u.email}</span>
+                        <span className={`status ${u.role}`}>{u.role}</span>
+                        <span>{new Date(u.createdAt).toLocaleDateString()}</span>
+                      </div>
+                      <div className="actions">
+                        <button onClick={() => startEditUser(u)}>Edit</button>
+                        <button className="danger" onClick={() => deleteUser(u._id, u.email)}>Remove</button>
+                      </div>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>

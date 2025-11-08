@@ -10,7 +10,7 @@ if (API_KEY) {
 
 function to12h(hhmm) {
   if (!hhmm) return "";
-  if (/[AP]M$/i.test(hhmm)) return hhmm; // already 12h like "9:00 AM"
+  if (/[AP]M$/i.test(hhmm)) return hhmm;
   const [h, m] = hhmm.split(":").map(Number);
   const ampm = h >= 12 ? "PM" : "AM";
   const hour = h % 12 || 12;
@@ -68,4 +68,28 @@ Manage your appointments: ${APP_URL}/dashboard`;
     html,
   };
   await sgMail.send(msg);
+}
+
+export async function sendContactMessage({ fromEmail, fromName, subject, message }) {
+  if (!API_KEY) {
+    console.warn("SENDGRID_API_KEY missing; skipping contact email.");
+    return;
+  }
+  const safeSubject = subject || "New Contact Message";
+  const html = `
+    <div style="font-family:Arial,sans-serif;color:#21212f">
+      <h2>Contact Form Message</h2>
+      <p><strong>From:</strong> ${fromName || "Anonymous"} &lt;${fromEmail}&gt;</p>
+      <p style="white-space:pre-line">${(message || "").replace(/</g, "&lt;")}</p>
+      <hr/>
+      <p>Reply to: <a href="mailto:${fromEmail}">${fromEmail}</a></p>
+    </div>
+  `;
+  await sgMail.send({
+    to: EMAIL_FROM,
+    from: EMAIL_FROM,
+    subject: safeSubject,
+    text: `From: ${fromName} <${fromEmail}>\n\n${message}`,
+    html,
+  });
 }

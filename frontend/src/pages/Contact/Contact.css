@@ -1,0 +1,118 @@
+.contact-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 160px 20px 80px;
+  font-family: "Public Sans", sans-serif;
+}
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 50px;
+}
+
+.contact-card h1 {
+  font-size: 42px;
+  margin: 0;
+  background: linear-gradient(90deg, #6176f7, #ffc27a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.intro {
+  font-size: 18px;
+  line-height: 28px;
+  color: #555;
+  margin: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form .row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-form input,
+.contact-form textarea {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid #cfd3d6;
+  border-radius: 14px;
+  font-size: 16px;
+  font-family: inherit;
+  background: #f7fafc;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 160px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid rgba(97, 118, 247, 0.35);
+  outline-offset: 2px;
+  border-color: #6176f7;
+  background: #ffffff;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(180deg, #ffc27a 0%, #ffa337 100%);
+  cursor: pointer;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.submit-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 163, 55, 0.35);
+}
+
+.error {
+  color: #b42318;
+  font-size: 14px;
+  margin: 0;
+}
+
+.success {
+  color: #117d34;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .contact-card {
+    padding: 36px 28px;
+  }
+  .contact-card h1 {
+    font-size: 34px;
+  }
+}

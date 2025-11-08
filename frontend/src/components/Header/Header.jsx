@@ -18,9 +18,11 @@ const Header = () => {
     } else if (location.pathname.startsWith("/booking")) {
       setActive("");
     } else if (location.pathname.startsWith("/dashboard")) {
-      setActive("dashboard"); // <-- highlight My Dashboard
+      setActive("dashboard");
     } else if (location.pathname.startsWith("/admin")) {
       setActive("admin");
+    } else if (location.pathname.startsWith("/contact")) {
+      setActive("contact");
     }
   }, [location.pathname]);
 
@@ -58,16 +60,14 @@ const Header = () => {
             >
               About
             </Link>
-            <a
-              href="#"
+            {/* Replace anchor with Link */}
+            <Link
+              to="/contact"
               className={active === "contact" ? "active" : ""}
-              onClick={(e) => {
-                e.preventDefault();
-                setActive("contact");
-              }}
+              onClick={() => setActive("contact")}
             >
               Contact
-            </a>
+            </Link>
             {isAuthenticated && user?.role !== "admin" && (
               <Link
                 to="/dashboard"

@@ -6,6 +6,7 @@ import RegisterPage from "./pages/Register/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import ServicePage from "./pages/ServicePage/ServicePage.jsx";
 import BookingPage from "./pages/BookingPage/BookingPage.jsx";
+import Contact from "./pages/Contact/Contact.jsx";
 import { AuthProvider } from "./auth/AuthContext.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import UserBoard from "./pages/UserBoard/UserBoard.jsx";
@@ -22,6 +23,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/service" element={<ServicePage />} />
+            <Route path="/contact" element={<Contact />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/booking" element={<BookingPage />} />
               <Route path="/dashboard" element={<UserBoard />} />

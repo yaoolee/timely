@@ -5,7 +5,7 @@ Timely is a full‑stack appointment booking app for students and tutors. It sup
 ## Features
 
 - Authentication
-	- Register/Login with httpOnly cookie sessions (no localStorage tokens)
+	- Register/Login with httpOnly cookie sessions 
 	- Friendly error messages and secure defaults (helmet, CORS, cookie-parser)
 - Booking flow (students)
 	- Pick a date and time, confirm booking
@@ -13,16 +13,17 @@ Timely is a full‑stack appointment booking app for students and tutors. It sup
 	- “Book New Session” shortcut from dashboard
 - Services
 	- Browse service catalog (name, duration, price, instructor)
-- Admin dashboard (browser-based, no manual DB edits)
+- Admin dashboard 
 	- Services: Create, Update, Delete
-	- Time Slots: Create, View, Delete (prevents delete if booked)
+	- Time Slots: Create, View, Delete 
 	- Appointments: View all, cancel
 	- Users: View all, update name/role (promote to admin), delete (with confirmation; also frees associated time slots)
 
 ## Tech stack
 
 - Frontend: React + Vite, React Router, Axios
-- Backend: Node.js, Express 5, Mongoose (MongoDB)
+- Backend: Node.js, Express, Mongoose (MongoDB)
+- API: SendGrid
 - Security/tooling: httpOnly cookies (JWT), CORS, helmet, morgan, dotenv, Prettier, ESLint
 
 ## Project structure

@@ -23,6 +23,8 @@ const Header = () => {
       setActive("admin");
     } else if (location.pathname.startsWith("/contact")) {
       setActive("contact");
+    } else if (location.pathname.startsWith("/about")) {
+      setActive("about");
     }
   }, [location.pathname]);
 
@@ -54,13 +56,12 @@ const Header = () => {
               Services
             </Link>
             <Link
-              to=""
+              to="/about"
               className={active === "about" ? "active" : ""}
               onClick={() => setActive("about")}
             >
               About
             </Link>
-            {/* Replace anchor with Link */}
             <Link
               to="/contact"
               className={active === "contact" ? "active" : ""}

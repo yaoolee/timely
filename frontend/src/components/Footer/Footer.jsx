@@ -20,7 +20,7 @@ const Footer = () => {
             <h4>Explore</h4>
             <Link to="/">Home</Link>
             <Link to="/service">Services</Link>
-            <a href="#">About</a>
+            <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
           </div>
           <div className="footer-column">

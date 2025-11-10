@@ -12,6 +12,7 @@ import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import UserBoard from "./pages/UserBoard/UserBoard.jsx";
 import AdminBoard from "./pages/AdminBoard/AdminBoard.jsx";
 import AdminRoute from "./auth/AdminRoute.jsx";
+import AboutPage from "./pages/AboutPage/AboutPage.jsx"; 
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/service" element={<ServicePage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/booking" element={<BookingPage />} />
               <Route path="/dashboard" element={<UserBoard />} />

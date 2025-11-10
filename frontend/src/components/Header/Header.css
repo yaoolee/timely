@@ -1,5 +1,5 @@
 .header {
-  position: absolute;
+  position: fixed;
   width: 100%;
   box-sizing: border-box;
   top: 0;
@@ -7,6 +7,7 @@
   z-index: 10;
   padding: 24px 0;
   background-color: #6176f7;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .header .container {
@@ -94,5 +95,26 @@ svg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (max-width: 840px) {
+  .header-content {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .signup-button.btn {
+    width: auto;
+    min-width: 120px;
+    height: 44px;
+    padding: 0 18px;
+  }
+  .login-link {
+    padding: 10px 18px;
+    font-size: 14px;
   }
 }

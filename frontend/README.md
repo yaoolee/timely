@@ -1,5 +1,6 @@
 # Screenshots
 
 ## Home
-[Home](public/homepage.png)
+![Home](public/homepage.png)
+
 

@@ -12,7 +12,7 @@ import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import UserBoard from "./pages/UserBoard/UserBoard.jsx";
 import AdminBoard from "./pages/AdminBoard/AdminBoard.jsx";
 import AdminRoute from "./auth/AdminRoute.jsx";
-import AboutPage from "./pages/AboutPage/AboutPage.jsx"; 
+import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 
 function App() {
   return (

@@ -6,7 +6,6 @@ import "./ServicePage.css";
 import ServiceCard from "../../components/ServiceCard/ServiceCard";
 import { serviceVisuals, defaultVisual } from "../../utils/serviceAssets";
 
-
 const ServicePage = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);

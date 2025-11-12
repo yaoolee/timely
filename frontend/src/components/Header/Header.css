@@ -1,13 +1,11 @@
 .header {
-  position: fixed;
+  position: static;
   width: 100%;
   box-sizing: border-box;
   top: 0;
   left: 0;
   z-index: 10;
-  padding: 24px 0;
   background-color: #6176f7;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .header .container {

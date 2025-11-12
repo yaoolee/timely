@@ -3,15 +3,16 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  server: mode === "development"
-    ? {
-        proxy: {
-          "/api": {
-            target: "http://localhost:5050",
-            changeOrigin: true,
-            secure: false,
+  server:
+    mode === "development"
+      ? {
+          proxy: {
+            "/api": {
+              target: "http://localhost:5050",
+              changeOrigin: true,
+              secure: false,
+            },
           },
-        },
-      }
-    : undefined,
+        }
+      : undefined,
 }));

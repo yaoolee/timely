@@ -23,7 +23,7 @@ const LandingPage = () => {
               </Link>
             </div>
             <div className="hero-image">
-              <img src="./src/assets/Saly-10.png" alt="A person at a desk illustration" />
+              <img src="/assets/Saly-10.png" alt="Person at a desk illustration" />
             </div>
           </div>
         </section>
@@ -39,7 +39,7 @@ const LandingPage = () => {
               {}
               <div className="service-card">
                 <div className="service-card-image-wrapper">
-                  <img src="./src/assets/coding.png" alt="Service illustration" />
+                  <img src="/assets/coding.png" alt="Coding service" />
                   <div className="service-card-tag">Coding</div>
                 </div>
                 <p>Duration: 60 mins</p>
@@ -49,7 +49,7 @@ const LandingPage = () => {
               </div>
               <div className="service-card">
                 <div className="service-card-image-wrapper">
-                  <img src="./src/assets/design.png" alt="Service illustration" />
+                  <img src="/assets/design.png" alt="Design service" />
                   <div className="service-card-tag">Design</div>
                 </div>
                 <p>Duration: 30 mins</p>
@@ -59,7 +59,7 @@ const LandingPage = () => {
               </div>
               <div className="service-card">
                 <div className="service-card-image-wrapper">
-                  <img src="./src/assets/math.png" alt="Service illustration" />
+                  <img src="/assets/math.png" alt="Math service" />
                   <div className="service-card-tag">Math</div>
                 </div>
                 <p>Duration: 60 mins</p>
@@ -69,7 +69,7 @@ const LandingPage = () => {
               </div>
               <div className="service-card">
                 <div className="service-card-image-wrapper">
-                  <img src="./src/assets/business.png" alt="Service illustration" />
+                  <img src="/assets/business.png" alt="Business service" />
                   <div className="service-card-tag">Business</div>
                 </div>
                 <p>Duration: 60 mins</p>
@@ -108,7 +108,7 @@ const LandingPage = () => {
         <section className="why-choose-us-section">
           <div className="container why-choose-us-content">
             <div className="why-choose-us-image">
-              <img src="./src/assets/rocket.png" alt="Person on a rocket illustration" />
+              <img src="/assets/rocket.png" alt="Rocket illustration" />
             </div>
             <div className="why-choose-us-text">
               <h2>Why Choose Us</h2>

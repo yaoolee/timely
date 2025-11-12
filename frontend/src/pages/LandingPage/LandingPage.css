@@ -16,6 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
 }
 .hero-text {
   max-width: 790px;
@@ -40,6 +41,7 @@
   width: 100%;
   max-width: 738px;
   height: auto;
+  display: block;
   background-color: #6176f7;
 }
 
@@ -182,4 +184,137 @@
 }
 .why-choose-us-image img {
   background-color: white;
+}
+
+@media (max-width: 1024px) {
+  .hero-text h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+  .services-header h2,
+  .how-it-works-section h2 {
+    font-size: 48px;
+  }
+  .service-cards {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 840px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text {
+    max-width: 640px;
+  }
+  .hero-text .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-image img {
+    max-width: 520px;
+  }
+  .steps {
+    flex-direction: column;
+  }
+  .step-connector {
+    transform: rotate(90deg);
+  }
+  .why-choose-us-content {
+    flex-direction: column-reverse;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    text-align: center;
+    gap: 40px;
+  }
+  .why-choose-us-text p {
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: 120px;
+    padding-bottom: 160px;
+  }
+  .hero-text h1 {
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 30px;
+  }
+  .hero-text .subtitle {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-text .description {
+    font-size: 18px;
+  }
+  .services-header h2,
+  .how-it-works-section h2 {
+    font-size: 40px;
+  }
+  .service-cards {
+    gap: 24px;
+  }
+  .service-card {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .steps {
+    gap: 24px;
+  }
+  .step {
+    padding: 24px;
+  }
+  .step p,
+  .step h3 {
+    font-size: 20px;
+  }
+  .why-choose-us-text p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 34px;
+    line-height: 44px;
+  }
+  .hero-text .description {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+  .service-card p {
+    font-size: 18px;
+  }
+  .service-card-footer span {
+    font-size: 20px;
+  }
+  .step {
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .step p {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .step h3 {
+    font-size: 18px;
+  }
+  .why-choose-us-text p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    padding: 0 14px;
+  }
+  .hero-section {
+    padding-bottom: 140px;
+  }
 }

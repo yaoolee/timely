@@ -89,3 +89,93 @@
 .subscribe-form button {
   width: 162px;
 }
+
+@media (max-width: 1024px) {
+  .footer {
+    padding: 70px 0;
+  }
+  .footer-content {
+    gap: 32px;
+  }
+  .footer-column h4 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 840px) {
+  .footer {
+    padding: 60px 0 70px;
+  }
+  .footer-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .footer-column {
+    flex: 1 1 45%;
+    min-width: 240px;
+  }
+  .footer-column .brand {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 56px 0 64px;
+  }
+  .footer-content {
+    flex-direction: column;
+    gap: 36px;
+    padding-top: 10px;
+  }
+  .footer-column {
+    min-width: 100%;
+  }
+  .footer-column .brand {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  .footer-column h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .footer-column p,
+  .footer-column a {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .subscribe-form {
+    max-width: 100%;
+    width: 100%;
+  }
+  .subscribe-form input {
+    width: 100%;
+  }
+  .subscribe-form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 50px 0 56px;
+  }
+  .footer-column .brand {
+    font-size: 36px;
+  }
+  .footer-column h4 {
+    font-size: 18px;
+  }
+  .subscribe-form {
+    gap: 16px;
+  }
+  .subscribe-form input {
+    padding: 14px;
+    font-size: 15px;
+  }
+  .subscribe-form button {
+    height: 46px;
+    font-size: 15px;
+  }
+}

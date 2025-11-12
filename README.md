@@ -2,6 +2,10 @@
 
 Timely is a full‑stack appointment booking app for students and tutors. It supports secure auth with httpOnly cookies, browsing services, booking/rescheduling/canceling sessions, and an admin dashboard to manage services, time slots, users, and view all appointments.
 
+## Deployment
+
+[Live on Vercel](https://timely-frontend-steel.vercel.app/)
+
 ## Features
 
 - Authentication

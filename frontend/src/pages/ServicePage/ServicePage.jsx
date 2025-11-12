@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./ServicePage.css";
 import ServiceCard from "../../components/ServiceCard/ServiceCard";
 import { serviceVisuals, defaultVisual } from "../../utils/serviceAssets";
+import { api } from "../../api/client.js";
 
 const ServicePage = () => {
   const [services, setServices] = useState([]);
@@ -14,8 +14,8 @@ const ServicePage = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get("http://localhost:5050/api/services");
-        setServices(res.data);
+        const { data } = await api.get("/services");
+        setServices(data);
       } catch (err) {
         console.error(err);
         setError("Failed to load services");
@@ -23,7 +23,6 @@ const ServicePage = () => {
         setLoading(false);
       }
     };
-
     fetchServices();
   }, []);
 

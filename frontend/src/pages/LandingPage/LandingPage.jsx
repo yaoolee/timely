@@ -117,9 +117,9 @@ const LandingPage = () => {
                 Instead of back-and-forth emails or messages, everything happens in one place:
                 browse services, pick a time, and confirm your appointment in just a few clicks.
               </p>
-              <a href="/register">
+              <Link to="/register">
                 <Button>Sign up for Free</Button>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

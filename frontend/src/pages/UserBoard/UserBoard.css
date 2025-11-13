@@ -1,7 +1,7 @@
 .userboard {
   max-width: 900px;
   margin: 0 auto;
-  padding: 140px 20px 60px; /* top and bottom padding fixed */
+  padding: 40px 20px 60px;
 }
 .userboard h1 {
   font-size: 28px;
